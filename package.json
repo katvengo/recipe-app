@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:build": "cd recipe-app && npm install && npm build",
     "start:dev": "cd recipe-app && npm run dev"
   },
   "keywords": [],

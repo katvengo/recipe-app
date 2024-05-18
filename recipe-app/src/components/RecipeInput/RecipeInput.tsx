@@ -18,7 +18,14 @@ const styles = {
   }
 }
 
-export const RecipeInput = ({ labelName, inputName, value, onChange }) => (
+interface MyInputProps {
+  labelName: string,
+   inputName: string,
+   value: string,
+   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  }
+
+const RecipeInput: React.FC<MyInputProps> = ({ labelName, inputName, value, onChange }) => (
 <div style={styles.formField}>    
   <Label htmlFor={inputName} style={styles.label}>{labelName}</Label>
     <Input 

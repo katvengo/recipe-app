@@ -1,7 +1,14 @@
 import React from 'react'
 import { TextAreaField } from '@aws-amplify/ui-react';
+interface MyTextareaProps {
+  label: string,
+  name: string,
+  rows: number,
+  value: string,
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
 
-const RecipeTextarea = ({label, name, rows, value, onChange,  ...props}) => {
+const RecipeTextarea: React.FC<MyTextareaProps>  = ({label, name, rows, value, onChange,  ...props}) => {
   const styles = {
     formField: {
       display: 'flex',

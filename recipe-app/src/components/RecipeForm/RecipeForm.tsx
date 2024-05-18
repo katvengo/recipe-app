@@ -19,8 +19,8 @@ const RecipeForm = () => {
         recipeIngredients: '',
         recipeDirections: '',
       });
-
-      const handleChange = (e) => {
+      
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({
           ...formData,
@@ -28,11 +28,10 @@ const RecipeForm = () => {
         });
       };
 
-      const handleSubmit = (e) => {
+      const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Form Data:', formData);
-        
-      };
+    };
 
 return (
     <div className="sub-container" style={styles.container}>
@@ -52,16 +51,17 @@ return (
         <RecipeTextarea
         name="recipeDirections"
         label="Directions"
-        rows='3'
+        rows={3}
         value={formData.recipeDirections}
         onChange={handleChange}
         />
         <RecipeButton 
         type="submit" 
-        text="Submit"
         variation="none"
         colorTheme="overlay"
-        />
+        >
+          Submit
+        </RecipeButton>
 
         </form>
         </div>

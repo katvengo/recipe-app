@@ -14,7 +14,7 @@ interface MyButtonProps {
 const RecipeButton:React.FC<MyButtonProps> = ({ children }) => {
   const childrenAsReactNode = children as React.ReactNode;
 
-  return <button>{childrenAsReactNode}</button>;
+  return <Button>{childrenAsReactNode}</Button>;
 
 }
 

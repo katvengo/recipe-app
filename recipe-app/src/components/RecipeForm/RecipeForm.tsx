@@ -34,7 +34,8 @@ const RecipeForm = () => {
     };
 
 return (
-    <div className="sub-container" style={styles.container}>
+   <div className="sub-container" style={styles.container}>
+    <h1>Recipe Form</h1>
     <form onSubmit={handleSubmit}>
         <RecipeInput 
           inputName="recipeName"

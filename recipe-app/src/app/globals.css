@@ -1,39 +1,44 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: #f1c40e;
 }
 
 .container {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .sub-container {
-  display: flex;
   background-color: #27b463;
 }
 
 .amplify-button {
   --amplify-internal-button-color: white !important;
-  --amplify-internal-button-background-color: #018749 !important;
---amplify-internal-button-border-color: #1e7e34 !important;
+ --amplify-internal-button-background-color: #018749 !important;
+  --amplify-internal-button-border-color: #1e7e34 !important;
+}
+
+.amplify-button.amplify-field-group__control.amplify-button.amplify-menu__trigger {
+  --amplify-internal-button-color: white !important;
+ --amplify-internal-button-background-color: var(--amplify-colors-green-40) !important;
+  --amplify-internal-button-border-color: var(--amplify-colors-green-40) !important;
 }
 
 .amplify-input {
   --amplify-components-fieldcontrol-border-color: white !important;
-  background-color: white;
+  background-color: white !important;
 }
 .amplify-input:focus {
---amplify-components-fieldcontrol-focus-border-color: white !important;
---amplify-components-fieldcontrol-focus-box-shadow: white !important;
---amplify-components-fieldcontrol-focus-box-shadow: 0px 0px 0px 2px white !important;
-
+  --amplify-components-fieldcontrol-focus-border-color: white !important;
+  --amplify-components-fieldcontrol-focus-box-shadow: white !important;
+  --amplify-components-fieldcontrol-focus-box-shadow: 0px 0px 0px 2px white !important;
 }
 .amplify-button:hover {
---amplify-internal-button-background-color: #018749 !important;
---amplify-internal-button-border-color: white !important;
---amplify-internal-button-color: white !important
+  --amplify-internal-button-background-color: #018749 !important;
+  --amplify-internal-button-border-color: white !important;
+  --amplify-internal-button-color: white !important;
 }
 
 .amplify-textarea {
@@ -42,7 +47,7 @@ justify-content: center;
 }
 
 .amplify-label {
-  --amplify-components-field-label-color: white !important
+  --amplify-components-field-label-color: white !important;
 }
 
 .amplify-textarea:focus {
@@ -52,4 +57,43 @@ justify-content: center;
 
 [data-amplify-authenticator] {
   padding: 50px;
+}
+
+[data-amplify-authenticator] {
+  --amplify-components-authenticator-router-box-shadow: 0 0 16px
+    var(--amplify-colors-overlay-10);
+  --amplify-components-authenticator-router-border-width: 0;
+  --amplify-components-authenticator-form-padding: var(--amplify-space-medium)
+    var(--amplify-space-xl) var(--amplify-space-xl);
+  --amplify-components-button-primary-background-color: var(
+    --amplify-colors-green-20
+  );
+  --amplify-components-fieldcontrol-focus-box-shadow: 0 0 0 2px
+    var(--amplify-colors-purple-60);
+  --amplify-components-tabs-item-active-border-color: var(
+    --amplify-colors-green-40
+  );
+  --amplify-components-tabs-item-color: var(--amplify-colors-green-60);
+  --amplify-components-tabs-item-active-color: var(--amplify-colors-white);
+  --amplify-components-button-link-color: var(--amplify-colors-green-10);
+  --amplify-components-tabs-item-background-color: var(
+    --amplify-colors-green-20
+  ); /* Inactive tab color*/
+  --amplify-components-fieldcontrol-focus-border-color: var(
+    --amplify-colors-purple-40
+  );
+}
+
+.amplify-tabs__item--inactive {
+  border: 1px solid var(--amplify-colors-green-20); /* Inactive tab color*/
+  background-color: var(--amplify-colors-green-20); /* Inactive tab color*/
+}
+
+.amplify-button--menu {
+  background-color: var(--amplify-colors-green-20)
+}
+
+.amplify-menu__trigger {
+  background-color: var(--amplify-colors-green-40)
+
 }

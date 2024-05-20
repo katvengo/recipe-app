@@ -1,0 +1,17 @@
+/* src/styles.css */
+.main-content {
+  padding: 100px; /* Adjust this value based on the height of your navigation bar */
+}
+
+.view {
+    padding: 1rem;
+    background-color: #77ca85;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1
+}

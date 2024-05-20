@@ -12,10 +12,6 @@ const styles = {
     marginBottom: '0.5rem',
     color: 'white'
   },
-  input: {
-    color: 'black',
-    backgroundColor: 'white' /* Different background color */
-  }
 }
 
 interface MyInputProps {
@@ -33,7 +29,6 @@ const RecipeInput: React.FC<MyInputProps> = ({ labelName, inputName, value, onCh
     value={value}
     type="text" 
     onChange={onChange}
-    style={styles.input}
     />
   </div>
 );

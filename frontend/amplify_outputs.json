@@ -32,8 +32,8 @@
     "model_introspection": {
       "version": 1,
       "models": {
-        "recipe": {
-          "name": "recipe",
+        "Todo": {
+          "name": "Todo",
           "fields": {
             "id": {
               "name": "id",
@@ -42,36 +42,8 @@
               "isRequired": true,
               "attributes": []
             },
-            "name": {
-              "name": "name",
-              "isArray": false,
-              "type": "String",
-              "isRequired": false,
-              "attributes": []
-            },
-            "description": {
-              "name": "description",
-              "isArray": false,
-              "type": "String",
-              "isRequired": false,
-              "attributes": []
-            },
-            "categories": {
-              "name": "categories",
-              "isArray": false,
-              "type": "String",
-              "isRequired": false,
-              "attributes": []
-            },
-            "ingredients": {
-              "name": "ingredients",
-              "isArray": false,
-              "type": "String",
-              "isRequired": false,
-              "attributes": []
-            },
-            "directions": {
-              "name": "directions",
+            "content": {
+              "name": "content",
               "isArray": false,
               "type": "String",
               "isRequired": false,
@@ -95,7 +67,7 @@
             }
           },
           "syncable": true,
-          "pluralName": "recipes",
+          "pluralName": "Todos",
           "attributes": [
             {
               "type": "model",

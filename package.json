@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "cd recipe-app && npm run dev",
-    "lint": "cd recipe-app && npm run lint",
-    "build": "cd recipe-app && npm run build"
+    "start:dev": "cd frontend && npm run dev",
+    "lint": "cd frontend: && npm run lint",
+    "build": "cd frontend && npm install && npm run build"
   },
   "keywords": [],
   "author": "",

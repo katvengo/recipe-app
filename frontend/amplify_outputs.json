@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-west-2_9fQ2ytWZZ",
+    "user_pool_id": "us-west-2_1e8mnVmYE",
     "aws_region": "us-west-2",
-    "user_pool_client_id": "769lqi5mrj6m7v2aa67v7pf7vk",
-    "identity_pool_id": "us-west-2:bd447193-ef11-49f4-901c-a344779f6e87",
+    "user_pool_client_id": "5lotmdrjv2oqdj114jtgu7r0o8",
+    "identity_pool_id": "us-west-2:e33ea2fb-3ce8-45e0-8939-193f332713d8",
     "standard_required_attributes": [
       "email"
     ],
@@ -23,17 +23,19 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://6rapxry4mncozlmx24fpukrz2q.appsync-api.us-west-2.amazonaws.com/graphql",
+    "url": "https://fzatodps7vaexaqriduzmb4aji.appsync-api.us-west-2.amazonaws.com/graphql",
     "aws_region": "us-west-2",
-    "default_authorization_type": "AWS_IAM",
+    "api_key": "da2-2eh337qeefbufptypn4fnz4tcm",
+    "default_authorization_type": "API_KEY",
     "authorization_types": [
-      "AMAZON_COGNITO_USER_POOLS"
+      "AMAZON_COGNITO_USER_POOLS",
+      "AWS_IAM"
     ],
     "model_introspection": {
       "version": 1,
       "models": {
-        "Todo": {
-          "name": "Todo",
+        "Recipe": {
+          "name": "Recipe",
           "fields": {
             "id": {
               "name": "id",
@@ -42,8 +44,22 @@
               "isRequired": true,
               "attributes": []
             },
-            "content": {
-              "name": "content",
+            "recipeName": {
+              "name": "recipeName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "recipeIngredients": {
+              "name": "recipeIngredients",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "recipeDirections": {
+              "name": "recipeDirections",
               "isArray": false,
               "type": "String",
               "isRequired": false,
@@ -67,7 +83,7 @@
             }
           },
           "syncable": true,
-          "pluralName": "Todos",
+          "pluralName": "Recipes",
           "attributes": [
             {
               "type": "model",
@@ -79,7 +95,7 @@
                 "rules": [
                   {
                     "allow": "public",
-                    "provider": "iam",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",

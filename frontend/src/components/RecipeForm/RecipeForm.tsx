@@ -33,7 +33,7 @@ interface FormData {
 
 const RecipeForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [recipes, setRecipes] = useState<Schema['Recipe']['type'][]>([]);
+  const [recipes, setRecipes] = useState<Schema['Recipes']['type'][]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -49,7 +49,7 @@ const RecipeForm: React.FC = () => {
   };
 
   const putRecipe = async (name: string, ingredients: string, directions: string) => {
-    await client.models.Recipe.create({
+    await client.models.Recipes.create({
       recipeName: name,
       recipeIngredients: ingredients,
       recipeDirections: directions,

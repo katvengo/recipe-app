@@ -12,6 +12,10 @@ const UserIcon: React.FC<UserIconProps> = ({ styles, imageUrl, altText = 'User I
 
   const combinedStyles: CSSProperties = {
     borderRadius: '50%',
+    position: 'relative', // Ensure proper positioning for Next.js Image component
+    width: '32px', // Define width
+    height: '32px', // Define height
+    overflow: 'hidden', // Ensure content fits within the border radius
     ...styles,
   };
 

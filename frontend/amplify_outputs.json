@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-west-2_1e8mnVmYE",
+    "user_pool_id": "us-west-2_WnFu32DfB",
     "aws_region": "us-west-2",
-    "user_pool_client_id": "5lotmdrjv2oqdj114jtgu7r0o8",
-    "identity_pool_id": "us-west-2:e33ea2fb-3ce8-45e0-8939-193f332713d8",
+    "user_pool_client_id": "1fh4mhrnppf77pq4lc12ajndop",
+    "identity_pool_id": "us-west-2:a379f9ef-b22d-4b6a-ab1b-12384b7d08ad",
     "standard_required_attributes": [
       "email"
     ],
@@ -23,9 +23,9 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://fzatodps7vaexaqriduzmb4aji.appsync-api.us-west-2.amazonaws.com/graphql",
+    "url": "https://bdirgzpeircrnpkcahnrejadba.appsync-api.us-west-2.amazonaws.com/graphql",
     "aws_region": "us-west-2",
-    "api_key": "da2-2eh337qeefbufptypn4fnz4tcm",
+    "api_key": "da2-wxicgr7cwre4logn5te47yyfzu",
     "default_authorization_type": "API_KEY",
     "authorization_types": [
       "AMAZON_COGNITO_USER_POOLS",
@@ -34,8 +34,8 @@
     "model_introspection": {
       "version": 1,
       "models": {
-        "Recipe": {
-          "name": "Recipe",
+        "Recipes": {
+          "name": "Recipes",
           "fields": {
             "id": {
               "name": "id",
@@ -65,6 +65,28 @@
               "isRequired": false,
               "attributes": []
             },
+            "userProfileID": {
+              "name": "userProfileID",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": false,
+              "attributes": []
+            },
+            "userProfile": {
+              "name": "userProfile",
+              "isArray": false,
+              "type": {
+                "model": "UserProfile"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "association": {
+                "connectionType": "BELONGS_TO",
+                "targetNames": [
+                  "userProfileID"
+                ]
+              }
+            },
             "createdAt": {
               "name": "createdAt",
               "isArray": false,
@@ -90,12 +112,127 @@
               "properties": {}
             },
             {
+              "type": "key",
+              "properties": {
+                "fields": [
+                  "id"
+                ]
+              }
+            },
+            {
               "type": "auth",
               "properties": {
                 "rules": [
                   {
                     "allow": "public",
                     "provider": "apiKey",
+                    "operations": [
+                      "read"
+                    ]
+                  },
+                  {
+                    "provider": "userPools",
+                    "ownerField": "owner",
+                    "allow": "owner",
+                    "identityClaim": "cognito:username",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
+        },
+        "UserProfile": {
+          "name": "UserProfile",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "email": {
+              "name": "email",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "profileOwner": {
+              "name": "profileOwner",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "recipes": {
+              "name": "recipes",
+              "isArray": true,
+              "type": {
+                "model": "Recipes"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": true,
+              "association": {
+                "connectionType": "HAS_MANY",
+                "associatedWith": [
+                  "userProfileID"
+                ]
+              }
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "UserProfiles",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "key",
+              "properties": {
+                "fields": [
+                  "id"
+                ]
+              }
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "provider": "userPools",
+                    "ownerField": "profileOwner",
+                    "allow": "owner",
+                    "identityClaim": "cognito:username",
                     "operations": [
                       "create",
                       "update",

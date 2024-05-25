@@ -17,6 +17,7 @@ export const onCreateRecipes = /* GraphQL */ `subscription OnCreateRecipes(
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -25,7 +26,9 @@ export const onCreateRecipes = /* GraphQL */ `subscription OnCreateRecipes(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -45,11 +48,13 @@ export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfi
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }
@@ -66,6 +71,7 @@ export const onDeleteRecipes = /* GraphQL */ `subscription OnDeleteRecipes(
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -74,7 +80,9 @@ export const onDeleteRecipes = /* GraphQL */ `subscription OnDeleteRecipes(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -94,11 +102,13 @@ export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfi
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }
@@ -115,6 +125,7 @@ export const onUpdateRecipes = /* GraphQL */ `subscription OnUpdateRecipes(
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -123,7 +134,9 @@ export const onUpdateRecipes = /* GraphQL */ `subscription OnUpdateRecipes(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -143,11 +156,13 @@ export const onUpdateUserProfile = /* GraphQL */ `subscription OnUpdateUserProfi
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }

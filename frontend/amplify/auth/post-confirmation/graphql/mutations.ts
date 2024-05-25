@@ -17,6 +17,7 @@ export const createRecipes = /* GraphQL */ `mutation CreateRecipes(
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -25,7 +26,9 @@ export const createRecipes = /* GraphQL */ `mutation CreateRecipes(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -45,11 +48,13 @@ export const createUserProfile = /* GraphQL */ `mutation CreateUserProfile(
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }
@@ -66,6 +71,7 @@ export const deleteRecipes = /* GraphQL */ `mutation DeleteRecipes(
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -74,7 +80,9 @@ export const deleteRecipes = /* GraphQL */ `mutation DeleteRecipes(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -94,11 +102,13 @@ export const deleteUserProfile = /* GraphQL */ `mutation DeleteUserProfile(
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }
@@ -115,6 +125,7 @@ export const updateRecipes = /* GraphQL */ `mutation UpdateRecipes(
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -123,7 +134,9 @@ export const updateRecipes = /* GraphQL */ `mutation UpdateRecipes(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -143,11 +156,13 @@ export const updateUserProfile = /* GraphQL */ `mutation UpdateUserProfile(
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }

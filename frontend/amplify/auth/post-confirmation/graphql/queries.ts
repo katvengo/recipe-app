@@ -14,6 +14,7 @@ export const getRecipes = /* GraphQL */ `query GetRecipes($id: ID!) {
     id
     owner
     recipeDirections
+    recipeImage
     recipeIngredients
     recipeName
     updatedAt
@@ -22,7 +23,9 @@ export const getRecipes = /* GraphQL */ `query GetRecipes($id: ID!) {
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     userProfileID
@@ -39,11 +42,13 @@ export const getUserProfile = /* GraphQL */ `query GetUserProfile($id: ID!) {
     email
     id
     profileOwner
+    profilePicture
     recipes {
       nextToken
       __typename
     }
     updatedAt
+    username
     __typename
   }
 }
@@ -70,6 +75,7 @@ export const listRecipes = /* GraphQL */ `query ListRecipes(
       id
       owner
       recipeDirections
+      recipeImage
       recipeIngredients
       recipeName
       updatedAt
@@ -103,7 +109,9 @@ export const listUserProfiles = /* GraphQL */ `query ListUserProfiles(
       email
       id
       profileOwner
+      profilePicture
       updatedAt
+      username
       __typename
     }
     nextToken

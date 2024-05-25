@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Authenticator.Provider>
       <ThemeProvider theme={customTheme}>
-        <Authenticator variation="modal" loginMechanisms={["email"]}>
+        <Authenticator variation="modal" loginMechanisms={["email"]} signUpAttributes={['preferred_username']}>
           {({ signOut, user }) => (
             <>
             <Navigation></Navigation>

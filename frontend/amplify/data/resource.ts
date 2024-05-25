@@ -7,6 +7,7 @@ const schema = a.schema({
     recipeName: a.string(),
     recipeIngredients: a.string(),
     recipeDirections: a.string(),
+    recipeImage: a.string(),
     userProfileID: a.id(), // Foreign key field
     userProfile: a.belongsTo('UserProfile', 'userProfileID') // Correctly reference the foreign key field
   })
@@ -19,6 +20,8 @@ const schema = a.schema({
     id: a.id(), // Adding id field for UserProfile
     email: a.string(),
     profileOwner: a.string(),
+    profilePicture: a.string(),
+    username: a.string(),
     recipes: a.hasMany('Recipes', 'userProfileID') // Reference the foreign key in Recipes
   })
   .authorization((allow) => [

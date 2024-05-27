@@ -8,6 +8,7 @@ import { Schema } from '@/amplify/data/resource';
 import { generateClient } from 'aws-amplify/data';
 import FormComponent, { MyFormComponentProps } from '../FormComponent/FormComponent'
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import RecipeImage from '../Image/Image';
 
 const client = generateClient<Schema>();
 
@@ -16,12 +17,14 @@ interface FormData {
     recipeName: string;
     recipeIngredients: string;
     recipeDirections: string;
+    recipeImage: string;
   }
   
   const initialFormData: FormData = {
     recipeName: '',
     recipeIngredients: '',
     recipeDirections: '',
+    recipeImage: '',
   };
   
   const clearForm = (
@@ -47,14 +50,15 @@ const RecipeForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    putRecipe(formData.recipeName, formData.recipeIngredients, formData.recipeDirections);
+    putRecipe(formData.recipeName, formData.recipeIngredients, formData.recipeDirections, formData.recipeImage);
   };
 
-  const putRecipe = async (name: string, ingredients: string, directions: string) => {
+  const putRecipe = async (name: string, ingredients: string, directions: string, image: string) => {
     await client.models.Recipes.create({
       recipeName: name,
       recipeIngredients: ingredients,
       recipeDirections: directions,
+      recipeImage: image,
       userProfileID: user.userId
     },
     {
@@ -85,8 +89,15 @@ const RecipeForm: React.FC = () => {
           onChange={handleChange}
         />
         <RecipeInput
-          inputName="recipeIngredients"
-          labelName="Ingredients"
+          inputName="recipeImage"
+          labelName="Image URL"
+          value={formData.recipeImage}
+          onChange={handleChange}
+        />
+        <RecipeTextarea
+          name="recipeIngredients"
+          label="Ingredients"
+          rows={3}
           value={formData.recipeIngredients}
           onChange={handleChange}
         />
@@ -98,11 +109,6 @@ const RecipeForm: React.FC = () => {
           onChange={handleChange}
         />
       </FormComponent>
-      <ul>
-        {recipes.map(({ id, recipeName }) => (
-          <li key={id}>{recipeName}</li>
-        ))}
-      </ul>
       </>
   );
 };

@@ -25,13 +25,15 @@ export default function RootLayout({
       <body className={inter.className}>
       <ConfigureAmplifyClientSide />
       <ThemeProviderComponent>
-      <AuthProvider>          
+      <AuthProvider>   
+               
             <Navigation></Navigation>
             <main className="main-content">
               {children}
               </main>
       </AuthProvider>  
       </ThemeProviderComponent> 
+
       </body>
     </html>
   );

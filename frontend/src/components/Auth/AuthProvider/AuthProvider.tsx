@@ -5,6 +5,7 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import { Schema } from '@/amplify/data/resource';
 import { AuthUser } from '@aws-amplify/auth';
+import Title from "../../Title/Title"
 
 
 const AuthContext = createContext<Schema['UserProfile']['type'] | null>(null)
@@ -13,11 +14,18 @@ const AuthContext = createContext<Schema['UserProfile']['type'] | null>(null)
   children?: ReactNode;
 }
 
+const components = {
+  Header() {
+    return (
+      <Title />
+    );
+  },
+}
 const AuthProvider: React.FC<AuthProps> = ({ 
   children, 
 }) => {  
   return (
-    <Authenticator loginMechanisms={['email']} signUpAttributes={['preferred_username']}
+    <Authenticator loginMechanisms={['email']} signUpAttributes={['preferred_username']} components={components}
     >
       {children}
     </Authenticator>

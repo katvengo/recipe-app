@@ -11,7 +11,7 @@ body {
 }
 
 .sub-container {
-  background-color: #27b463;
+  background-color: #27b463; 
 }
 
 .amplify-button {
@@ -85,15 +85,26 @@ body {
 }
 
 .amplify-tabs__item--inactive {
-  border: 1px solid var(--amplify-colors-green-20); /* Inactive tab color*/
-  background-color: var(--amplify-colors-green-20); /* Inactive tab color*/
+  border: 1px solid #27b463; /* Inactive tab color*/
+  background-color: #27b463; /* Inactive tab color*/
 }
 
 .amplify-button--menu {
-  background-color: var(--amplify-colors-green-20)
+  background-color: #27b463
 }
 
 .amplify-menu__trigger {
-  background-color: var(--amplify-colors-green-40)
+  background-color: #27b463
 
+}
+
+a:-webkit-any-link {
+  color: white !important;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.amplify-button--menu:hover {
+  color: white !important;
+  background-color: #0E9B4A !important;
 }

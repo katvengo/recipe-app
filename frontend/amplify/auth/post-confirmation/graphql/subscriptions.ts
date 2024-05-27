@@ -8,14 +8,10 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateRecipes = /* GraphQL */ `subscription OnCreateRecipes(
-  $filter: ModelSubscriptionRecipesFilterInput
-  $owner: String
-) {
-  onCreateRecipes(filter: $filter, owner: $owner) {
+export const onCreateRecipes = /* GraphQL */ `subscription OnCreateRecipes($filter: ModelSubscriptionRecipesFilterInput) {
+  onCreateRecipes(filter: $filter) {
     createdAt
     id
-    owner
     recipeDirections
     recipeImage
     recipeIngredients
@@ -25,6 +21,7 @@ export const onCreateRecipes = /* GraphQL */ `subscription OnCreateRecipes(
       createdAt
       email
       id
+      owner
       profileOwner
       profilePicture
       updatedAt
@@ -41,12 +38,13 @@ export const onCreateRecipes = /* GraphQL */ `subscription OnCreateRecipes(
 >;
 export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfile(
   $filter: ModelSubscriptionUserProfileFilterInput
-  $profileOwner: String
+  $owner: String
 ) {
-  onCreateUserProfile(filter: $filter, profileOwner: $profileOwner) {
+  onCreateUserProfile(filter: $filter, owner: $owner) {
     createdAt
     email
     id
+    owner
     profileOwner
     profilePicture
     recipes {
@@ -62,14 +60,10 @@ export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfi
   APITypes.OnCreateUserProfileSubscriptionVariables,
   APITypes.OnCreateUserProfileSubscription
 >;
-export const onDeleteRecipes = /* GraphQL */ `subscription OnDeleteRecipes(
-  $filter: ModelSubscriptionRecipesFilterInput
-  $owner: String
-) {
-  onDeleteRecipes(filter: $filter, owner: $owner) {
+export const onDeleteRecipes = /* GraphQL */ `subscription OnDeleteRecipes($filter: ModelSubscriptionRecipesFilterInput) {
+  onDeleteRecipes(filter: $filter) {
     createdAt
     id
-    owner
     recipeDirections
     recipeImage
     recipeIngredients
@@ -79,6 +73,7 @@ export const onDeleteRecipes = /* GraphQL */ `subscription OnDeleteRecipes(
       createdAt
       email
       id
+      owner
       profileOwner
       profilePicture
       updatedAt
@@ -95,12 +90,13 @@ export const onDeleteRecipes = /* GraphQL */ `subscription OnDeleteRecipes(
 >;
 export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfile(
   $filter: ModelSubscriptionUserProfileFilterInput
-  $profileOwner: String
+  $owner: String
 ) {
-  onDeleteUserProfile(filter: $filter, profileOwner: $profileOwner) {
+  onDeleteUserProfile(filter: $filter, owner: $owner) {
     createdAt
     email
     id
+    owner
     profileOwner
     profilePicture
     recipes {
@@ -116,14 +112,10 @@ export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfi
   APITypes.OnDeleteUserProfileSubscriptionVariables,
   APITypes.OnDeleteUserProfileSubscription
 >;
-export const onUpdateRecipes = /* GraphQL */ `subscription OnUpdateRecipes(
-  $filter: ModelSubscriptionRecipesFilterInput
-  $owner: String
-) {
-  onUpdateRecipes(filter: $filter, owner: $owner) {
+export const onUpdateRecipes = /* GraphQL */ `subscription OnUpdateRecipes($filter: ModelSubscriptionRecipesFilterInput) {
+  onUpdateRecipes(filter: $filter) {
     createdAt
     id
-    owner
     recipeDirections
     recipeImage
     recipeIngredients
@@ -133,6 +125,7 @@ export const onUpdateRecipes = /* GraphQL */ `subscription OnUpdateRecipes(
       createdAt
       email
       id
+      owner
       profileOwner
       profilePicture
       updatedAt
@@ -149,12 +142,13 @@ export const onUpdateRecipes = /* GraphQL */ `subscription OnUpdateRecipes(
 >;
 export const onUpdateUserProfile = /* GraphQL */ `subscription OnUpdateUserProfile(
   $filter: ModelSubscriptionUserProfileFilterInput
-  $profileOwner: String
+  $owner: String
 ) {
-  onUpdateUserProfile(filter: $filter, profileOwner: $profileOwner) {
+  onUpdateUserProfile(filter: $filter, owner: $owner) {
     createdAt
     email
     id
+    owner
     profileOwner
     profilePicture
     recipes {

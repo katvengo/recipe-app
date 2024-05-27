@@ -11,21 +11,19 @@ const schema = a.schema({
     userProfileID: a.id(), // Foreign key field
     userProfile: a.belongsTo('UserProfile', 'userProfileID') // Correctly reference the foreign key field
   })
-  .authorization((allow) => [
-    allow.publicApiKey().to(['read']),
-    allow.owner()
-  ]),
+  .authorization(allow => [allow.publicApiKey()]),
       
   UserProfile: a.model({
     id: a.id(), // Adding id field for UserProfile
     email: a.string(),
-    profileOwner: a.string(),
     profilePicture: a.string(),
     username: a.string(),
-    recipes: a.hasMany('Recipes', 'userProfileID') // Reference the foreign key in Recipes
+    recipes: a.hasMany('Recipes', 'userProfileID'), // Reference the foreign key in Recipes
+    profileOwner: a.string()
   })
   .authorization((allow) => [
-    allow.ownerDefinedIn("profileOwner"),
+    allow.publicApiKey().to(['read']),
+    allow.owner(),
   ]),
 })
 .authorization((allow) => [allow.resource(postConfirmation)]);

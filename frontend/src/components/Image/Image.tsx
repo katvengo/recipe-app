@@ -1,27 +1,20 @@
-import React from 'react'
+import React, { CSSProperties} from 'react'
 import { Image } from '@aws-amplify/ui-react';
 
 
-interface MyImageProps {
-src: string,
-alt: string
+export interface MyImageProps {
+src?: string,
+alt?: string,
+styles?: CSSProperties
 }
 
-const RecipeImage: React.FC<MyImageProps> = ({src, alt}) => {
-    const styles = {
-        logo: {
-            width: 80,
-            height: 80,
-            alignSelf: 'center',
-            marginTop: 50,
-            marginBottom: 50,
-        },
-    }
+const RecipeImage: React.FC<MyImageProps> = ({src, alt, styles}) => {
+
   return (
 <Image
       src={src}
       alt={alt}
-    
+      style={styles}
     />  )
 }
 

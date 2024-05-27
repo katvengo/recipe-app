@@ -7,6 +7,7 @@ import RecipeTextarea from '../RecipeTextarea/RecipeTextarea';
 import { Schema } from '@/amplify/data/resource';
 import { generateClient } from 'aws-amplify/data';
 import FormComponent, { MyFormComponentProps } from '../FormComponent/FormComponent'
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 const client = generateClient<Schema>();
 
@@ -34,6 +35,7 @@ interface FormData {
 const RecipeForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [recipes, setRecipes] = useState<Schema['Recipes']['type'][]>([]);
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -53,6 +55,10 @@ const RecipeForm: React.FC = () => {
       recipeName: name,
       recipeIngredients: ingredients,
       recipeDirections: directions,
+      userProfileID: user.userId
+    },
+    {
+      authMode: 'apiKey',
     })
       .then((response) => {
         if (response.data) {
@@ -70,6 +76,7 @@ const RecipeForm: React.FC = () => {
       <FormComponent 
       onSubmit={handleSubmit}
       formName="Recipe Form"
+      type="submit"
       >
         <RecipeInput
           inputName="recipeName"

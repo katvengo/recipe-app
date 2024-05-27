@@ -15,7 +15,6 @@ export const createRecipes = /* GraphQL */ `mutation CreateRecipes(
   createRecipes(condition: $condition, input: $input) {
     createdAt
     id
-    owner
     recipeDirections
     recipeImage
     recipeIngredients
@@ -25,6 +24,7 @@ export const createRecipes = /* GraphQL */ `mutation CreateRecipes(
       createdAt
       email
       id
+      owner
       profileOwner
       profilePicture
       updatedAt
@@ -47,6 +47,7 @@ export const createUserProfile = /* GraphQL */ `mutation CreateUserProfile(
     createdAt
     email
     id
+    owner
     profileOwner
     profilePicture
     recipes {
@@ -69,7 +70,6 @@ export const deleteRecipes = /* GraphQL */ `mutation DeleteRecipes(
   deleteRecipes(condition: $condition, input: $input) {
     createdAt
     id
-    owner
     recipeDirections
     recipeImage
     recipeIngredients
@@ -79,6 +79,7 @@ export const deleteRecipes = /* GraphQL */ `mutation DeleteRecipes(
       createdAt
       email
       id
+      owner
       profileOwner
       profilePicture
       updatedAt
@@ -101,6 +102,7 @@ export const deleteUserProfile = /* GraphQL */ `mutation DeleteUserProfile(
     createdAt
     email
     id
+    owner
     profileOwner
     profilePicture
     recipes {
@@ -123,7 +125,6 @@ export const updateRecipes = /* GraphQL */ `mutation UpdateRecipes(
   updateRecipes(condition: $condition, input: $input) {
     createdAt
     id
-    owner
     recipeDirections
     recipeImage
     recipeIngredients
@@ -133,6 +134,7 @@ export const updateRecipes = /* GraphQL */ `mutation UpdateRecipes(
       createdAt
       email
       id
+      owner
       profileOwner
       profilePicture
       updatedAt
@@ -155,6 +157,7 @@ export const updateUserProfile = /* GraphQL */ `mutation UpdateUserProfile(
     createdAt
     email
     id
+    owner
     profileOwner
     profilePicture
     recipes {

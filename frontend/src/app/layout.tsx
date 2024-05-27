@@ -4,6 +4,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import ConfigureAmplifyClientSide from "../../components/ConfigureAmplify";
+import  AuthProvider from "../components/Auth/AuthProvider/AuthProvider";
+import { Navigation } from "../components/Navigation/Navigation";
+import ThemeProviderComponent from '../components/ThemeProviderComponent/ThemeProviderComponent';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +24,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <ConfigureAmplifyClientSide />
-        {children}
+      <ThemeProviderComponent>
+      <AuthProvider>          
+            <Navigation></Navigation>
+            <main className="main-content">
+              {children}
+              </main>
+      </AuthProvider>  
+      </ThemeProviderComponent> 
       </body>
     </html>
   );

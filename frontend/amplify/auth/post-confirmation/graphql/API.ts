@@ -6,7 +6,6 @@ export type Recipes = {
   __typename: "Recipes",
   createdAt: string,
   id: string,
-  owner?: string | null,
   recipeDirections?: string | null,
   recipeImage?: string | null,
   recipeIngredients?: string | null,
@@ -21,6 +20,7 @@ export type UserProfile = {
   createdAt: string,
   email?: string | null,
   id: string,
+  owner?: string | null,
   profileOwner?: string | null,
   profilePicture?: string | null,
   recipes?: ModelRecipesConnection | null,
@@ -40,7 +40,6 @@ export type ModelRecipesFilterInput = {
   id?: ModelIDInput | null,
   not?: ModelRecipesFilterInput | null,
   or?: Array< ModelRecipesFilterInput | null > | null,
-  owner?: ModelStringInput | null,
   recipeDirections?: ModelStringInput | null,
   recipeImage?: ModelStringInput | null,
   recipeIngredients?: ModelStringInput | null,
@@ -118,6 +117,7 @@ export type ModelUserProfileFilterInput = {
   id?: ModelIDInput | null,
   not?: ModelUserProfileFilterInput | null,
   or?: Array< ModelUserProfileFilterInput | null > | null,
+  owner?: ModelStringInput | null,
   profileOwner?: ModelStringInput | null,
   profilePicture?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -135,7 +135,6 @@ export type ModelRecipesConditionInput = {
   createdAt?: ModelStringInput | null,
   not?: ModelRecipesConditionInput | null,
   or?: Array< ModelRecipesConditionInput | null > | null,
-  owner?: ModelStringInput | null,
   recipeDirections?: ModelStringInput | null,
   recipeImage?: ModelStringInput | null,
   recipeIngredients?: ModelStringInput | null,
@@ -159,6 +158,7 @@ export type ModelUserProfileConditionInput = {
   email?: ModelStringInput | null,
   not?: ModelUserProfileConditionInput | null,
   or?: Array< ModelUserProfileConditionInput | null > | null,
+  owner?: ModelStringInput | null,
   profileOwner?: ModelStringInput | null,
   profilePicture?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -203,7 +203,6 @@ export type ModelSubscriptionRecipesFilterInput = {
   createdAt?: ModelSubscriptionStringInput | null,
   id?: ModelSubscriptionIDInput | null,
   or?: Array< ModelSubscriptionRecipesFilterInput | null > | null,
-  owner?: ModelStringInput | null,
   recipeDirections?: ModelSubscriptionStringInput | null,
   recipeImage?: ModelSubscriptionStringInput | null,
   recipeIngredients?: ModelSubscriptionStringInput | null,
@@ -248,7 +247,8 @@ export type ModelSubscriptionUserProfileFilterInput = {
   email?: ModelSubscriptionStringInput | null,
   id?: ModelSubscriptionIDInput | null,
   or?: Array< ModelSubscriptionUserProfileFilterInput | null > | null,
-  profileOwner?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
+  profileOwner?: ModelSubscriptionStringInput | null,
   profilePicture?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   username?: ModelSubscriptionStringInput | null,
@@ -263,7 +263,6 @@ export type GetRecipesQuery = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -274,6 +273,7 @@ export type GetRecipesQuery = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -293,6 +293,7 @@ export type GetUserProfileQuery = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {
@@ -319,7 +320,6 @@ export type ListRecipesQuery = {
       __typename: "Recipes",
       createdAt: string,
       id: string,
-      owner?: string | null,
       recipeDirections?: string | null,
       recipeImage?: string | null,
       recipeIngredients?: string | null,
@@ -347,6 +347,7 @@ export type ListUserProfilesQuery = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -366,7 +367,6 @@ export type CreateRecipesMutation = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -377,6 +377,7 @@ export type CreateRecipesMutation = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -397,6 +398,7 @@ export type CreateUserProfileMutation = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {
@@ -418,7 +420,6 @@ export type DeleteRecipesMutation = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -429,6 +430,7 @@ export type DeleteRecipesMutation = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -449,6 +451,7 @@ export type DeleteUserProfileMutation = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {
@@ -470,7 +473,6 @@ export type UpdateRecipesMutation = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -481,6 +483,7 @@ export type UpdateRecipesMutation = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -501,6 +504,7 @@ export type UpdateUserProfileMutation = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {
@@ -514,7 +518,6 @@ export type UpdateUserProfileMutation = {
 
 export type OnCreateRecipesSubscriptionVariables = {
   filter?: ModelSubscriptionRecipesFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnCreateRecipesSubscription = {
@@ -522,7 +525,6 @@ export type OnCreateRecipesSubscription = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -533,6 +535,7 @@ export type OnCreateRecipesSubscription = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -544,7 +547,7 @@ export type OnCreateRecipesSubscription = {
 
 export type OnCreateUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
-  profileOwner?: string | null,
+  owner?: string | null,
 };
 
 export type OnCreateUserProfileSubscription = {
@@ -553,6 +556,7 @@ export type OnCreateUserProfileSubscription = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {
@@ -566,7 +570,6 @@ export type OnCreateUserProfileSubscription = {
 
 export type OnDeleteRecipesSubscriptionVariables = {
   filter?: ModelSubscriptionRecipesFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnDeleteRecipesSubscription = {
@@ -574,7 +577,6 @@ export type OnDeleteRecipesSubscription = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -585,6 +587,7 @@ export type OnDeleteRecipesSubscription = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -596,7 +599,7 @@ export type OnDeleteRecipesSubscription = {
 
 export type OnDeleteUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
-  profileOwner?: string | null,
+  owner?: string | null,
 };
 
 export type OnDeleteUserProfileSubscription = {
@@ -605,6 +608,7 @@ export type OnDeleteUserProfileSubscription = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {
@@ -618,7 +622,6 @@ export type OnDeleteUserProfileSubscription = {
 
 export type OnUpdateRecipesSubscriptionVariables = {
   filter?: ModelSubscriptionRecipesFilterInput | null,
-  owner?: string | null,
 };
 
 export type OnUpdateRecipesSubscription = {
@@ -626,7 +629,6 @@ export type OnUpdateRecipesSubscription = {
     __typename: "Recipes",
     createdAt: string,
     id: string,
-    owner?: string | null,
     recipeDirections?: string | null,
     recipeImage?: string | null,
     recipeIngredients?: string | null,
@@ -637,6 +639,7 @@ export type OnUpdateRecipesSubscription = {
       createdAt: string,
       email?: string | null,
       id: string,
+      owner?: string | null,
       profileOwner?: string | null,
       profilePicture?: string | null,
       updatedAt: string,
@@ -648,7 +651,7 @@ export type OnUpdateRecipesSubscription = {
 
 export type OnUpdateUserProfileSubscriptionVariables = {
   filter?: ModelSubscriptionUserProfileFilterInput | null,
-  profileOwner?: string | null,
+  owner?: string | null,
 };
 
 export type OnUpdateUserProfileSubscription = {
@@ -657,6 +660,7 @@ export type OnUpdateUserProfileSubscription = {
     createdAt: string,
     email?: string | null,
     id: string,
+    owner?: string | null,
     profileOwner?: string | null,
     profilePicture?: string | null,
     recipes?:  {

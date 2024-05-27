@@ -17,7 +17,7 @@ const AuthProvider: React.FC<AuthProps> = ({
   children, 
 }) => {  
   return (
-    <Authenticator variation='modal' loginMechanisms={['email']} signUpAttributes={['preferred_username']}
+    <Authenticator loginMechanisms={['email']} signUpAttributes={['preferred_username']}
     >
       {children}
     </Authenticator>

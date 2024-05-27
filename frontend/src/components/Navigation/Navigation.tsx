@@ -25,9 +25,9 @@ export const Navigation: React.FC = () => {
         <MenuItem>
           <Link href="/">Home</Link>
         </MenuItem>
-        <MenuItem>
+        {/* <MenuItem>
           <Link href="/recipes">Recipes</Link>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={signOut}>Sign Out</MenuItem> 
       </Menu>
       <Title style={{ textAlign: "center" }}></Title>

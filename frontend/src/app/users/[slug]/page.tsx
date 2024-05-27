@@ -12,24 +12,6 @@ interface Props {
   params: { slug: string };
 }
 
-interface RecipeProps {
-id?: string,
-recipeDirections?: string,
-recipeImage?: string,
-recipeIngredients?: string,
-recipeName?: string,
-userProfileID?: string
-}
-
-interface UserProfileType {
-  id: string | null;
-  email: string | null;
-  profilePicture: string | null;
-  username: string | null;
-  recipes: RecipeProps[];
-  profileOwner: string | null;
-}
-
 const UserDetailPage = ({ params: { slug } }: Props ) => {
   const { user, signOut } = useAuthenticator((context) => [context.user])
   const [userDetails, setUserDetails] = useState<Schema['UserProfile']['type'] | null>(null);
@@ -43,6 +25,7 @@ const UserDetailPage = ({ params: { slug } }: Props ) => {
         })
           .then((response) => {
               const userInfo = response.data
+              console.log(userInfo.recipes, 'recipes')
               setUserDetails(userInfo)  
             })
           .catch((error) => {

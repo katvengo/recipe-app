@@ -1,8 +1,7 @@
 'use client';
-import React, { useState, FormEvent } from 'react'
-import { Button, ButtonProps, ButtonVariations, ButtonColorTheme } from "@aws-amplify/ui-react";
+import React from 'react'
+import { Button, ButtonProps } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
-import { type ClientSchema } from '@aws-amplify/backend';
 
 export interface MyButtonProps extends ButtonProps {
   children?: React.ReactNode;
@@ -13,7 +12,7 @@ const RecipeButton:React.FC<MyButtonProps> = ({
   children,
   type = "button",
   ...props}) => {
-  const childrenAsReactNode = children as React.ReactNode;
+    const childrenAsReactNode = children as React.ReactNode;
 
   return <Button type={type} {...props}>{childrenAsReactNode}</Button>;
 

@@ -1,12 +1,9 @@
 import React, {CSSProperties} from 'react'
 import {
     Card,
-    View,
     Heading,
     Flex,
-    Badge,
     Text,
-    Button,
     useTheme,
   } from '@aws-amplify/ui-react';
 import Image, { MyImageProps } from "../Image/Image";
@@ -24,7 +21,7 @@ interface RecipeCardProps extends MyImageProps {
     key?: string | null | undefined
 
 }
-const RecipeCard: React.FC<RecipeCardProps> = ({key, styles, src, alt, id, recipeName, recipeDirections, recipeIngredients, recipeImage}) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({key, src, alt, recipeName, recipeDirections, recipeIngredients}) => {
     const { tokens } = useTheme();
 
   return (

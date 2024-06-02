@@ -1,10 +1,11 @@
 'use client';
-import React, { useState, FormEvent } from 'react'
-import { Input, Label, Flex } from '@aws-amplify/ui-react';
+import React from 'react'
+import { Input, Label } from '@aws-amplify/ui-react';
 
 const styles = {
   formField: {
     display: 'flex',
+    // eslint-disable-next-line @typescript-eslint/prefer-as-const
     flexDirection: 'column' as 'column',
     marginBottom: '1rem',
   },

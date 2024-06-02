@@ -4,7 +4,6 @@ import React, { ReactNode, useContext, createContext } from 'react';
 import { Authenticator } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import { Schema } from '@/amplify/data/resource';
-import { AuthUser } from '@aws-amplify/auth';
 import Title from "../../Title/Title"
 
 

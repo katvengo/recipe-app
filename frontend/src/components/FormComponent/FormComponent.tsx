@@ -1,15 +1,12 @@
 "use client";
 
-import React, { CSSProperties } from "react";
+import React from "react";
 import RecipeButton, { MyButtonProps } from "../Button/RecipeButton";
-import MainDiv from '../MainDivComponent/MainDiv';
  
 export interface MyFormComponentProps extends Omit<MyButtonProps, 'onSubmit'> {
-  formName?: string;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 const FormComponent: React.FC<MyFormComponentProps> = ({
-  formName,
   onSubmit,
   children,
   type = "submit",
@@ -17,8 +14,6 @@ const FormComponent: React.FC<MyFormComponentProps> = ({
 }) => {
 
   return (
-    <MainDiv>
-      <h1>{formName}</h1>
       <form onSubmit={onSubmit}>
         {children}
         <RecipeButton
@@ -28,7 +23,6 @@ const FormComponent: React.FC<MyFormComponentProps> = ({
           Submit
         </RecipeButton>
       </form>
-    </MainDiv>
   );
 };
 

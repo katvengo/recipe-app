@@ -1,4 +1,4 @@
-// components/Logout.tsx
+// @ts-nocheck
 
 "use client";
 

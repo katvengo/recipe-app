@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, useTheme,} from '@aws-amplify/ui-react';
+import { Heading} from '@aws-amplify/ui-react';
 import MainDiv from '../../MainDivComponent/MainDiv';
 
 export interface WelcomeTitleProps {

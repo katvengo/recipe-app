@@ -1,11 +1,16 @@
 import React from 'react'
 
-const Title = ({...props}) => {
+interface TitleProps {
+  fontSize?: string; // Specify the type of the fontSize prop as string (with an optional '?')
+}
+
+const Title: React.FC<TitleProps> = ({fontSize}) => {
+
 
   const styles = {
     h1: {
       color: "white",
-      fontSize: "32px"
+      fontSize: fontSize || "32px"
     }
   }
   return (

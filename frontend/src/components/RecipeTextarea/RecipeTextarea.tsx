@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextAreaField } from '@aws-amplify/ui-react';
+
 interface MyTextareaProps {
   label: string,
   name: string,
@@ -8,10 +9,11 @@ interface MyTextareaProps {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const RecipeTextarea: React.FC<MyTextareaProps>  = ({label, name, rows, value, onChange,  ...props}) => {
+const RecipeTextarea: React.FC<MyTextareaProps>  = ({label, name, rows, value, onChange}) => {
   const styles = {
     formField: {
       display: 'flex',
+      // eslint-disable-next-line @typescript-eslint/prefer-as-const
       flexDirection: 'column' as 'column',
       marginBottom: '1rem',
       color: 'white',

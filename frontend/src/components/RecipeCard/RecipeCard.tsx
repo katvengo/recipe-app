@@ -16,7 +16,6 @@ interface RecipeCardProps extends MyImageProps {
     recipeName?: string | null | undefined,
     recipeDirections?: string | null | undefined,
     recipeIngredients?: string | null | undefined,
-    recipeImage?: string | null | undefined,
     styles?: CSSProperties,
     key?: string | null | undefined
 

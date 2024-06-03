@@ -34,6 +34,7 @@ const UserDetailPage = ({ params: { slug } }: Props) => {
     const getUserRecipes = (userId: string) => {
       return client.models.Recipes.list({filter: { userProfileID: { eq: userId } }})
         .then(response => {
+          console.log(response.data, 'data')
           return response.data;
         });
     };
@@ -51,7 +52,7 @@ const UserDetailPage = ({ params: { slug } }: Props) => {
           <RecipeCard
             key={id}
             recipeName={recipeName}
-            recipeImage={recipeImage}
+            src={recipeImage}
             recipeIngredients={recipeIngredients}
             recipeDirections={recipeDirections}
           />

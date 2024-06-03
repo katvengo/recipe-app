@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RecipeInput from '../RecipeInput/RecipeInput';
 import RecipeTextarea from '../RecipeTextarea/RecipeTextarea';
 import { Schema } from '@/amplify/data/resource';
@@ -10,7 +10,7 @@ import { useAuthenticator, Heading, Grid, Card, HeadingLevel } from '@aws-amplif
 import ImageUpload from '../ImageUpload/ImageUpload';
 import MainDiv from '../MainDivComponent/MainDiv';
 import { RecipeInterface } from "../../interfaces/RecipeInterface";
-
+import { useFiles } from "../../providers/FileProvider";
 const client = generateClient<Schema>();
 
 const initialFormData: RecipeInterface = {
@@ -33,11 +33,8 @@ const clearForm = (
 
 const RecipeForm: React.FC<MyRecipeFormProps> = () => {
   const [formData, setFormData] = useState<RecipeInterface>(initialFormData);
-  // const [recipes, setRecipes] = useState<Schema['Recipes']['type'][]>([]);
-  const { user, signOut } = useAuthenticator((context) => [context.user]);
-  // const [file, setFile] = useState();
-  // const [auth, setAuth] = useState(null);
-
+  const { user } = useAuthenticator((context) => [context.user]);
+  const { files } = useFiles();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,8 +44,25 @@ const RecipeForm: React.FC<MyRecipeFormProps> = () => {
     });
   };
 
+  useEffect(() => {
+    if (files) {
+      console.log(files, 'files being found for useEffect')
+      const fileKey = Object.keys(files)[0];
+      if (fileKey) {
+        const imageSrc = `${process.env.STORAGE_URL}${fileKey}`
+        console.log(imageSrc, 'image src')
+        setFormData((prevData) => ({
+          ...prevData,
+          recipeImage: imageSrc || '',
+        }));
+      }
+    }
+  }, [files]);
+
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault();     
+    console.log(formData, 'formData ')
     createRecipe(formData.recipeName, formData.recipeIngredients, formData.recipeDirections, formData.recipeImage);
   };
 
@@ -121,10 +135,11 @@ const RecipeForm: React.FC<MyRecipeFormProps> = () => {
             columnEnd="5"
             backgroundColor='#27B463'
           >
-            <ImageUpload maxFileCount={1} />
+            <ImageUpload />
           </Card>
         </Grid>
       </MainDiv>
+    
     </>
   );
 };

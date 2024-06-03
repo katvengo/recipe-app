@@ -1,8 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { StorageManager } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
 import { StorageManagerHandle, ProcessFileParams } from '@aws-amplify/ui-react-storage/dist/types/components/StorageManager/types';
+import { useFiles } from '../../providers/FileProvider';
 
 interface ImageUploadProps {
   ref?: React.ForwardedRef<StorageManagerHandle>;
@@ -15,34 +16,29 @@ interface ImageUploadProps {
   onUploadStart?: (file: {key: string}) => void;
 }
 
-interface FileWithKey {
-  file?: File;
-  key?: string;
-}
-
-interface FileStatus {
-  status?: 'uploading' | 'success' | 'error';
-}
-
-type FileState = Record<string, FileStatus | undefined>;
-
 const processFile = async ({ file }: { file: File }): Promise<ProcessFileParams> => {
+  
   const fileExtension = file.name.split('.').pop();
-
+  const name = file.name.split('.')[0];
   const filebuffer = await file.arrayBuffer();
   const hashBuffer = await window.crypto.subtle.digest('SHA-1', filebuffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray
     .map((a) => a.toString(16).padStart(2, '0'))
     .join('');
-
-  return { file, key: `${hashHex}.${fileExtension}` };
+  return { file, key: `${name}${hashHex}.${fileExtension}` };
 };
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ ref, maxFileCount, path }) => {
-  const [files, setFiles] = useState<FileState>({});
+const ImageUpload: React.FC<ImageUploadProps> = ({ ref }) => {
+  const { files, setFiles } = useFiles();
+
+  useEffect(() => {
+    console.log('Files state changed:', files);
+  }, [files]);
+
 
   const handleFileRemove = ({ key }: { key: string }) => {
+    
     setFiles((prevFiles) => {
       const updatedFiles = { ...prevFiles };
       delete updatedFiles[key]; // Correct way to remove a key
@@ -72,6 +68,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ ref, maxFileCount, path }) =>
   };
 
   const handleUploadStart = ({ key }: { key?: string }) => {
+    console.log(files, 'files from imageUpload')
     if(key) {
       setFiles((prevFiles) => ({
       ...prevFiles,
@@ -95,13 +92,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ ref, maxFileCount, path }) =>
         onUploadSuccess={handleUploadSuccess}
         onUploadStart={handleUploadStart}
       />
-      {Object.keys(files).map((key) => (
-        files[key] ? (
-          <div key={key}>
-            {key}: {files[key]?.status}
-          </div>
-        ) : null
-      ))}
     </>
   );
 };

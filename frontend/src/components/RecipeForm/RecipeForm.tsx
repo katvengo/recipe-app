@@ -49,7 +49,7 @@ const RecipeForm: React.FC<MyRecipeFormProps> = () => {
       console.log(files, 'files being found for useEffect')
       const fileKey = Object.keys(files)[0];
       if (fileKey) {
-        const imageSrc = `${process.env.STORAGE_URL}${fileKey}`
+        const imageSrc = `{fileKey}`
         console.log(imageSrc, 'image src')
         setFormData((prevData) => ({
           ...prevData,

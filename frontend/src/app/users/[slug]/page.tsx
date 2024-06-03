@@ -52,7 +52,7 @@ const UserDetailPage = ({ params: { slug } }: Props) => {
           <RecipeCard
             key={id}
             recipeName={recipeName}
-            src={recipeImage}
+            src={recipeImage ? recipeImage : undefined} 
             recipeIngredients={recipeIngredients}
             recipeDirections={recipeDirections}
           />

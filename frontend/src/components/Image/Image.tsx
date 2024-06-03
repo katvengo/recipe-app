@@ -3,7 +3,7 @@ import { Image } from '@aws-amplify/ui-react';
 
 
 export interface MyImageProps {
-src?: string,
+src?: string | undefined,
 alt?: string,
 styles?: CSSProperties
 }

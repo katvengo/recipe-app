@@ -10,7 +10,7 @@ import Image, { MyImageProps } from "../Image/Image";
 import MainDiv from "../MainDivComponent/MainDiv"
 
 interface RecipeCardProps extends MyImageProps {
-    src?: string,
+    src?: string | null | undefined,
     alt?: string,
     id?: string,
     recipeName?: string | null | undefined,

@@ -24,7 +24,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({path, alt, recipeName, recipeDir
     const { tokens } = useTheme();
 
   return (
-    <MainDiv>
+    <MainDiv styles={{margin: "10px"}}>
     <Card 
     backgroundColor='#27B463'>
       <Flex direction="row" alignItems="flex-start">

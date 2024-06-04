@@ -1,25 +1,22 @@
 import React, { CSSProperties } from "react";
 
 export interface MainDivProps {
-    styles?: {
-      container?: CSSProperties;
-    };
+    styles?: CSSProperties;
     children?: React.ReactNode
   }
 
-const defaultStyles = {
-    container: {
+const defaultStyles: CSSProperties = {
       borderRadius: "1em",
       padding: "20px",
       color: "white",
-    } as CSSProperties,
+    
   };
   
-const MainDiv: React.FC<MainDivProps> = ({children, styles = defaultStyles}) => {
-    const appliedStyles = { ...defaultStyles, ...styles };
+const MainDiv: React.FC<MainDivProps> = ({children, styles = {}}) => {
+  const appliedStyles = { ...defaultStyles, ...styles };
 
   return (
-    <div style={appliedStyles.container} className="sub-container"> 
+    <div style={appliedStyles} className="sub-container"> 
     {children}
     </div>
   )

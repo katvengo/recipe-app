@@ -54,7 +54,7 @@ const UserDetailPage: React.FC<UserDetailProps> = ({ params: { slug } }) => {
             alt={recipeName || ''}
             key={id}
             recipeName={recipeName}
-            path={recipeImage as StorageImagePathProps['path'] || (() => '/defaultRecipeImage.png')}            
+            path={recipeImage as StorageImagePathProps['path']}            
             recipeIngredients={recipeIngredients}
             recipeDirections={recipeDirections}
           />

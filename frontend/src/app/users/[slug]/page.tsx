@@ -6,12 +6,13 @@ import { Schema } from '@/amplify/data/resource';
 import { generateClient } from 'aws-amplify/data';
 import RecipeCard from "@/components/RecipeCard/RecipeCard"
 const client = generateClient<Schema>();
+import { StorageImagePathProps } from '@aws-amplify/ui-react-storage/dist/types/components/StorageImage/types';
 
-interface Props {
+export interface UserDetailProps {
   params: { slug: string };
 }
 
-const UserDetailPage = ({ params: { slug } }: Props) => {
+const UserDetailPage: React.FC<UserDetailProps> = ({ params: { slug } }) => {
   const [userDetails, setUserDetails] = useState<Schema['UserProfile']['type'] | null>(null);
   const [recipes, setRecipes] = useState<Schema['Recipes']['type'][]>([]);
 
@@ -21,7 +22,7 @@ const UserDetailPage = ({ params: { slug } }: Props) => {
         .then(response => {
           const userInfo = response.data;
           setUserDetails(userInfo);
-          return getUserRecipes(userId); // Return the promise to chain
+          return getUserRecipes(userId); 
         })
         .then(recipesData => {
           setRecipes(recipesData);
@@ -50,9 +51,10 @@ const UserDetailPage = ({ params: { slug } }: Props) => {
       <ul>
         {recipes.map(({ id, recipeName, recipeImage, recipeIngredients, recipeDirections }) => (
           <RecipeCard
+            alt={recipeName || ''}
             key={id}
             recipeName={recipeName}
-            src={recipeImage ? recipeImage : undefined} 
+            path={recipeImage as StorageImagePathProps['path'] || (() => '/defaultRecipeImage.png')}            
             recipeIngredients={recipeIngredients}
             recipeDirections={recipeDirections}
           />

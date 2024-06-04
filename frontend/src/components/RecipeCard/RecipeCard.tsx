@@ -6,34 +6,38 @@ import {
     Text,
     useTheme,
   } from '@aws-amplify/ui-react';
-import Image, { MyImageProps } from "../Image/Image";
+import StorageImageComponent, { MyStorageImageProps } from "../StorageImage/StorageImageComponent";
 import MainDiv from "../MainDivComponent/MainDiv"
+import DefaultRecipeImage from "../DefaultRecipeImage/DefaultRecipeImage"
 
-interface RecipeCardProps extends MyImageProps {
-    src?: string | undefined,
-    alt?: string,
+export interface RecipeCardProps extends MyStorageImageProps {
     id?: string,
     recipeName?: string | null | undefined,
     recipeDirections?: string | null | undefined,
     recipeIngredients?: string | null | undefined,
     styles?: CSSProperties,
-    key?: string | null | undefined
+    key?: string | null | undefined,    
 
 }
-const RecipeCard: React.FC<RecipeCardProps> = ({key, src, alt, recipeName, recipeDirections, recipeIngredients}) => {
+
+const RecipeCard: React.FC<RecipeCardProps> = ({path, alt, recipeName, recipeDirections, recipeIngredients}) => {
     const { tokens } = useTheme();
 
   return (
-    <MainDiv key={key}>
+    <MainDiv>
     <Card 
     backgroundColor='#27B463'>
       <Flex direction="row" alignItems="flex-start">
-      {src && (
-        <Image
-          alt={alt}
-          src={src}
-          styles={{ width: "33%" }}
-        />)}
+      <div className="imageContainer">
+      {path ? (
+            <StorageImageComponent
+              alt={alt}
+              path={path}
+            />
+          ) : (
+            <DefaultRecipeImage/>
+          )}
+          </div>
         <Flex
           direction="column"
           alignItems="flex-start"
